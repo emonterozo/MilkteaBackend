@@ -273,7 +273,7 @@ router.get("/dashboard", verifyToken, async (req, res) => {
         owner: mongoose.Types.ObjectId(owner),
         status: "Completed",
         timestamp: {
-          $gte: new Date(startDate),
+          $gte: new Date(`${startDate} 00:59:59`),
           $lte: new Date(`${endDate} 23:59:59`),
         },
       },
@@ -327,7 +327,7 @@ router.get("/dashboard", verifyToken, async (req, res) => {
         owner: mongoose.Types.ObjectId(owner),
         status: "Completed",
         timestamp: {
-          $gte: new Date(previousYear.startDate),
+          $gte: new Date(`${previousYear.startDate} 00:59:59`),
           $lte: new Date(`${previousYear.endDate} 23:59:59`),
         },
       },
@@ -405,7 +405,7 @@ router.get("/dashboard", verifyToken, async (req, res) => {
         owner: mongoose.Types.ObjectId(owner),
         status: "Completed",
         timestamp: {
-          $gte: new Date(startDate),
+          $gte: new Date(`${startDate} 00:59:59`),
           $lte: new Date(`${endDate} 23:59:59`),
         },
       },
@@ -469,7 +469,7 @@ router.get("/store_sales", verifyToken, async (req, res) => {
         store: mongoose.Types.ObjectId(store),
         status: "Completed",
         timestamp: {
-          $gte: new Date(yearStartDate),
+          $gte: new Date(`${yearStartDate} 00:59:59`),
           $lte: new Date(`${yearEndDate} 23:59:59`),
         },
       },
@@ -548,7 +548,7 @@ router.get("/store_sales", verifyToken, async (req, res) => {
         $match: {
           "orders.status": "Completed",
           "orders.timestamp": {
-            $gte: new Date(monthStartDate),
+            $gte: new Date(`${monthStartDate} 00:59:59`),
             $lte: new Date(`${monthEndDate} 23:59:59`),
           },
         },

@@ -90,7 +90,7 @@ router.get("/orders", verifyToken, async (req, res) => {
         status: status,
         store: mongoose.Types.ObjectId(store),
         timestamp: {
-          $gte: new Date(timestamp),
+          $gte: new Date(`${timestamp} 00:59:59`),
           $lte: new Date(`${timestamp} 23:59:59`),
         },
       },
